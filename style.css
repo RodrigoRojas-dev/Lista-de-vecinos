@@ -1,0 +1,158 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #0a1a2a;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #00ffff;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #00ffff;
+  font-size: 32px;
+  margin-bottom: 15px;
+  letter-spacing: 10px;
+}
+
+p,
+li {
+  font-size: 24px;
+  color: #c0c0c0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.success {
+  color: #32cd32;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #32cd32;
+}
+
+.failure {
+  color: #dc143c;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #dc143c;
+}
+
+.panel {
+  background-color: rgba(26, 58, 90, 0.8);
+  margin-bottom: 40px;
+  width: 90%;
+  padding: 30px;
+  border: 2px solid #3a7a9a;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 255, 255, 0.2);
+  position: relative;
+}
+
+.panel::before,
+.panel::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-color: #00ffff;
+  border-style: solid;
+  position: absolute;
+}
+
+::before {
+  top: -2px;
+  left: -2px;
+  border-width: 2px 0 0 2px;
+}
+
+::after {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 2px 2px 0;
+}
+
+.inGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+input,
+.btn {
+  padding: 10px 0;
+}
+
+input {
+  background-color: #0a1a2a;
+  border: 1px solid #3a7a9a;
+  border-radius: 4px;
+  color: #c0c0c0;
+  font-size: 20px;
+}
+
+.btn {
+  background-color: #ff8c00;
+  color: #0a1a2a;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 40px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  transition: all 0.2s ease;
+  background-color: #00ffff;
+  cursor: pointer;
+}
+
+.notif,
+.lista {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+}
+
+li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+li::before {
+  content: '»';
+  color: #00ffff;
+  font-weight: bold;
+}
+
+li::after {
+  content: '«';
+  color: #00ffff;
+  font-weight: bold;
+}
+
+@media (max-width: 800px) {
+  .inGrid {
+    display: flex;
+    flex-direction: column;
+  }
+}
