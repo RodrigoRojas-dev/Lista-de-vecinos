@@ -7,9 +7,6 @@ const $parrafo = document.querySelector("p")
 //Trayendo el array del localStorage
 const vecinos = JSON.parse(localStorage.getItem("vecinos")) || []
 
-console.log(vecinos.length);
-
-
 const listarVecinos = () => {
   if (vecinos.length === 0) {
     mostrarTexto("success", "failure", "No hay vecinos para listar");
@@ -19,6 +16,7 @@ const listarVecinos = () => {
     vecinos.forEach((vecino) => {
       $listaDeVecinos.innerHTML += `<li>${vecino}</li>`
     });
+    $nombre.value = "";
   }
 }
 
@@ -35,6 +33,11 @@ const agregarVecino = () => {
     mostrarTexto("failure", "success", "El nombre debe tener al menos tres caracteres");
     return
   };
+
+  if (!isNaN(valorNombre)) {
+    mostrarTexto("failure", "success", "Ingrese solo texto, por favor");
+    return
+  }
 
   //Funcion de agregado de elemento
   vecinos.push(valorNombre);
@@ -60,6 +63,12 @@ const borrarVecino = () => {
 
   if (!vecinoEncontrardo) {
     mostrarTexto("failure", "success", "No se encontro al vecino")
+    return
+  }
+
+  if (!isNaN(valorNombre)) {
+    mostrarTexto("failure", "success", "Ingrese solo texto, por favor");
+    return
   } else {
     vecinos.splice(indice, 1);
 
@@ -75,15 +84,14 @@ const borrarVecino = () => {
 }
 
 const mostrarTexto = (claseAgregada, claseQuitada, texto) => {
-  if (vecinos.length > 0) {
+  if (vecinos.length === 0 && $nombre.value === "") {
+    /*     const claseSobrante = $parrafo.classList.item(0);
+        $parrafo.classList.remove(claseSobrante); */
+    $parrafo.removeAttribute("class")
+    $parrafo.textContent = texto;
+  } else if (vecinos.length >= 0) {
     $parrafo.classList.add(claseAgregada);
     $parrafo.classList.remove(claseQuitada);
-    $parrafo.textContent = texto;
-  }
-  if (vecinos.length === 0) {
-/*     const claseSobrante = $parrafo.classList.item(0);
-    $parrafo.classList.remove(claseSobrante); */
-    $parrafo.removeAttribute("class")
     $parrafo.textContent = texto;
   }
 }
