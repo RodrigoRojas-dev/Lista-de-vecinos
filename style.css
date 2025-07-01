@@ -12,6 +12,7 @@ h1 {
 body {
   background-color: #0a1a2a;
   line-height: 1.6;
+  margin: 0 5%;
 }
 
 h1 {
@@ -154,5 +155,17 @@ li::after {
   .inGrid {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width:550px) {
+  body {
+    margin: 0 8%;
+  }
+}
+
+@media (max-width:370px) {
+  body {
+    margin: 0 10%;
   }
 }
